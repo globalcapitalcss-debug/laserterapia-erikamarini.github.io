@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação — Bebê Quer Mamar | Laserterapia Pediátrica | Erika Marini</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --azul-profundo: #051026;
+            --azul-meio: #0a1e44;
+            --azul-elegante: #0f3470;
+            --azul-vivo: #1e5bcc;
+            --azul-claro: #3b82f6;
+            --azul-suave: #93c5fd;
+            --azul-luz: #dbeafe;
+            --dourado-suave: #c8a951;
+            --dourado-brilho: #f0d070;
+            --branco: #ffffff;
+            --texto-suave: #94a3b8;
+            --sombra-luz: 0 0 50px rgba(59, 130, 246, 0.2);
+            --sombra-dourada: 0 0 40px rgba(200, 169, 81, 0.25);
+            --fonte-titulo: 'Playfair Display', Georgia, serif;
+            --fonte-corpo: 'Inter', 'Segoe UI', sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: var(--fonte-corpo);
+            color: var(--branco);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* 🔦 EFEITOS CINEMATOGRÁFICOS — Fundo Animado */
+        .fundo-cine {
+            position: fixed; inset: 0; z-index: -2;
+            background: 
+                radial-gradient(ellipse at top right, rgba(30, 91, 204, 0.12), transparent 55%),
+                radial-gradient(ellipse at bottom left, rgba(147, 197, 253, 0.08), transparent 55%),
+                radial-gradient(circle at center, rgba(10, 30, 68, 0.6), var(--azul-profundo));
+        }
+        .particula {
+            position: absolute; width: 3px; height: 3px; background: var(--azul-suave); border-radius: 50%;
+            animation: flutuar 12s infinite ease-in-out; opacity: 0;
+        }
+        @keyframes flutuar {
+            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
+            15% { opacity: 0.7; }
+            85% { opacity: 0.7; }
+            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
+        }
+        .raio-luz {
+            position: absolute; width: 1px; height: 40%;
+            background: linear-gradient(180deg, rgba(240, 208, 112, 0.4), transparent);
+            opacity: 0; animation: raio 6s infinite ease-in-out; transform-origin: top;
+        }
+        @keyframes raio {
+            0%,100% { opacity: 0; transform: scaleY(0.8) rotate(12deg); }
+            50% { opacity: 0.5; transform: scaleY(1.1) rotate(-5deg); }
+        }
+
+        /* 🖼️ MARCA D'ÁGUA — Imagem de Fundo por Página */
+        .fundo-marca {
+            position: absolute; inset: 0; z-index: -1; overflow: hidden;
+        }
+        .fundo-img {
+            position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            width: 45%; height: 85%;
+            background-size: cover; background-position: center; border-radius: 24px 0 0 24px;
+            opacity: 0.08; filter: grayscale(15%) contrast(1.1);
+            transition: all 0.8s ease;
+        }
+        .pagina:hover .fundo-img { opacity: 0.12; transform: translateY(-50%) scale(1.02); }
+        .fundo-escuro .fundo-img { right: 0; left: auto; border-radius: 0 24px 24px 0; }
+
+        /* 💚 WhatsApp Fixo */
+        .whatsapp-fixo {
+            position: fixed; bottom: 32px; right: 32px; z-index: 99999;
+            display: flex; align-items: center; gap: 12px;
+            background: linear-gradient(135deg, #25d366, #1fb85a); color: white;
+            padding: 16px 28px; border-radius: 50px; text-decoration: none;
+            font-weight: 700; font-size: 1rem; box-shadow: 0 6px 24px rgba(37, 211, 102, 0.35);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .whatsapp-fixo:hover {
+            transform: translateY(-5px) scale(1.05); box-shadow: 0 12px 36px rgba(37, 211, 102, 0.45);
+        }
+        .whatsapp-fixo i { font-size: 1.4rem; }
+
+        /* 📄 PÁGINA BASE */
+        .pagina {
+            min-height: 100vh; padding: 80px 0; display: flex; align-items: center;
+            position: relative; border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+            opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out;
+        }
+        .pagina.visivel { opacity: 1; transform: translateY(0); }
+        .pagina-azul {
+            background: linear-gradient(135deg, rgba(10, 30, 68, 0.95), rgba(15, 52, 112, 0.9));
+        }
+        .container { max-width: 1050px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+        .bloco-central { max-width: 880px; width: 100%; }
+
+        /* ✨ TIPOGRAFIA */
+        .marcador {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(59, 130, 246, 0.15); color: var(--azul-suave);
+            padding: 8px 20px; border-radius: 50px; font-size: 0.85rem; font-weight: 600;
+            letter-spacing: 1px; text-transform: uppercase; margin-bottom: 24px;
+            border: 1px solid rgba(96, 165, 250, 0.2);
+        }
+        .pagina-azul .marcador {
+            background: rgba(200, 169, 81, 0.15); color: var(--dourado-brilho);
+            border-color: rgba(200, 169, 81, 0.25);
+        }
+        .titulo-pagina {
+            font-family: var(--fonte-titulo); font-size: 3rem; line-height: 1.2; margin-bottom: 20px;
+        }
+        .titulo-pagina span {
+            background: linear-gradient(90deg, var(--azul-suave), var(--dourado-brilho));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .subtitulo {
+            font-size: 1.15rem; color: var(--texto-suave); margin-bottom: 40px; line-height: 1.7;
+            max-width: 650px;
+        }
+        .pagina-azul .subtitulo { color: #a5b4fc; }
+        .destaque-frase {
+            font-family: var(--fonte-titulo); font-size: 1.3rem; font-style: italic;
+            border-left: 3px solid var(--azul-vivo); padding-left: 28px; margin: 40px 0;
+            color: var(--azul-luz); line-height: 1.8;
+            background: rgba(30, 91, 204, 0.05); padding: 24px 28px; border-radius: 0 16px 16px 0;
+            transition: all 0.3s ease;
+        }
+        .destaque-frase:hover { border-left-width: 6px; background: rgba(30, 91, 204, 0.1); }
+        .pagina-azul .destaque-frase { border-color: var(--dourado-suave); background: rgba(200, 169, 81, 0.08); }
+
+        /* 💎 CARDS — Interativos e Sofisticados */
+        .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-top: 40px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+        .card {
+            background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px);
+            border: 1px solid rgba(96, 165, 250, 0.15); border-radius: 20px; padding: 32px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative; overflow: hidden;
+        }
+        .card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--azul-vivo), var(--azul-suave), transparent);
+            transform: translateX(-100%); transition: transform 0.5s ease;
+        }
+        .card:hover {
+            transform: translateY(-8px); border-color: var(--azul-claro);
+            box-shadow: var(--sombra-luz); background: rgba(59, 130, 246, 0.06);
+        }
+        .card:hover::before { transform: translateX(0); }
+        .pagina-azul .card { border-color: rgba(200, 169, 81, 0.2); }
+        .pagina-azul .card::before { background: linear-gradient(90deg, var(--dourado-suave), var(--dourado-brilho), transparent); }
+        .pagina-azul .card:hover { border-color: var(--dourado-suave); box-shadow: var(--sombra-dourada); background: rgba(200, 169, 81, 0.05); }
+        
+        /* ✨ ÍCONES — Elegantes e Interativos */
+        .icone-lindo {
+            width: 64px; height: 64px; border-radius: 16px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(30, 91, 204, 0.05));
+            display: flex; align-items: center; justify-content: center; font-size: 1.6rem;
+            color: var(--azul-suave); margin-bottom: 20px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .card:hover .icone-lindo {
+            transform: scale(1.15) rotate(5deg); color: var(--azul-claro);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.35), rgba(30, 91, 204, 0.15));
+        }
+        .pagina-azul .icone-lindo {
+            background: linear-gradient(135deg, rgba(200, 169, 81, 0.2), rgba(240, 208, 112, 0.05));
+            color: var(--dourado-suave);
+        }
+        .pagina-azul .card:hover .icone-lindo {
+            transform: scale(1.15) rotate(-5deg); color: var(--dourado-brilho);
+            background: linear-gradient(135deg, rgba(200, 169, 81, 0.35), rgba(240, 208, 112, 0.15));
+        }
+
+        .card h4 { font-family: var(--fonte-titulo); font-size: 1.15rem; margin-bottom: 12px; color: var(--azul-luz); }
+        .card p { font-size: 0.95rem; color: var(--texto-suave); line-height: 1.7; }
+
+        /* ✅ LISTA ITEM */
+        .lista-item {
+            display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; padding: 12px 16px;
+            border-radius: 12px; transition: all 0.3s ease;
+        }
+        .lista-item:hover { background: rgba(59, 130, 246, 0.08); transform: translateX(8px); }
+        .lista-item i {
+            color: var(--azul-claro); margin-top: 4px; flex-shrink: 0; font-size: 1.1rem;
+        }
+        .pagina-azul .lista-item i { color: var(--dourado-suave); }
+
+        /* 🔢 PASSOS FLUXO */
+        .passo {
+            display: flex; gap: 24px; align-items: flex-start; padding: 20px;
+            border-radius: 16px; transition: all 0.4s ease;
+        }
+        .passo:hover { background: rgba(255, 255, 255, 0.05); transform: translateX(10px); }
+        .passo-numero {
+            font-family: var(--fonte-titulo); font-size: 2rem; font-weight: 700;
+            color: var(--dourado-brilho); min-width: 45px; line-height: 1; opacity: 0.9;
+        }
+        .passo h4 { font-size: 1.1rem; margin-bottom: 6px; color: var(--azul-suave); }
+        .passo p { color: #cbd5e1; font-size: 0.95rem; }
+
+        /* 📍 NÚMERO PÁGINA */
+        .numero-pagina {
+            position: absolute; bottom: 32px; right: 32px; font-size: 0.9rem;
+            color: rgba(148, 163, 184, 0.5); font-weight: 500;
+        }
+
+        /* 🎬 CAPA */
+        .capa {
+            background: linear-gradient(135deg, var(--azul-profundo), var(--azul-elegante), var(--azul-meio));
+            text-align: center; justify-content: center;
+        }
+        .logo-simbolo { font-size: 4.5rem; margin-bottom: 24px; animation: pulsar 3s infinite ease-in-out; }
+        @keyframes pulsar {
+            0%,100% { transform: scale(1); text-shadow: 0 0 30px rgba(59, 130, 246, 0.4); }
+            50% { transform: scale(1.05); text-shadow: 0 0 50px rgba(240, 208, 112, 0.3); }
+        }
+        .capa h1 { font-family: var(--fonte-titulo); font-size: 3.2rem; line-height: 1.2; margin-bottom: 16px; }
+        .capa h1 span { color: var(--dourado-brilho); }
+        .capa .sub-capa { font-size: 1.2rem; color: var(--azul-suave); max-width: 600px; margin: 0 auto 40px; }
+        .nome-prof { font-family: var(--fonte-titulo); font-size: 1.6rem; font-style: italic; color: var(--dourado-brilho); margin-top: 40px; }
+        .dados-contato { margin-top: 20px; color: var(--azul-luz); font-size: 0.95rem; }
+
+        /* ✍️ ASSINATURA */
+        .assinatura {
+            background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(10px);
+            border: 1px solid rgba(96, 165, 250, 0.15); border-radius: 20px;
+            padding: 40px; margin-top: 50px; text-align: left; max-width: 520px; margin-left: auto; margin-right: auto;
+            transition: all 0.4s ease;
+        }
+        .assinatura:hover { transform: translateY(-5px); box-shadow: var(--sombra-luz); }
+        .assinatura h4 { font-size: 1.3rem; margin-bottom: 8px; color: var(--azul-suave); }
+        .assinatura a { color: var(--azul-claro); text-decoration: none; font-weight: 600; transition: color 0.2s; }
+        .assinatura a:hover { color: var(--dourado-brilho); }
+
+        /* 📱 RESPONSIVO */
+        @media (max-width: 768px) {
+            .grid-2, .grid-3 { grid-template-columns: 1fr; }
+            .titulo-pagina { font-size: 2rem; }
+            .fundo-img { width: 100%; height: 30%; bottom: 0; top: auto; transform: none; border-radius: 24px 24px 0 0; }
+            .whatsapp-fixo { padding: 12px 20px; font-size: 0.9rem; }
+            .capa h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 🔦 FUNDO CINEMATOGRÁFICO ANIMADO -->
+<div class="fundo-cine"></div>
+<script>
+// Partículas flutuantes
+for(let i=0; i<50; i++){
+    let p = document.createElement('div');
+    p.className = 'particula';
+    p.style.left = Math.random()*100+'%';
+    p.style.animationDelay = Math.random()*12+'s';
+    p.style.animationDuration = (10+Math.random()*10)+'s';
+    document.body.appendChild(p);
+}
+// Raios de luz
+for(let i=0; i<8; i++){
+    let r = document.createElement('div');
+    r.className = 'raio-luz';
+    r.style.left = (10+Math.random()*80)+'%';
+    r.style.top = '10%';
+    r.style.animationDelay = Math.random()*6+'s';
+    document.body.appendChild(r);
+}
+</script>
+
+<!-- 💚 WhatsApp Fixo -->
+<a href="https://wa.me/5519974022547" target="_blank" class="whatsapp-fixo">
+    <i class="fab fa-whatsapp"></i> Fale Conosco: (19) 97402-2547
+</a>
+
+<!-- 📄 PÁGINA 1 — CAPA -->
+<section class="pagina capa">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(30,91,204,0.3), rgba(200,169,81,0.2));"></div>
+    </div>
+    <div class="container bloco-central">
+        <div class="logo-simbolo">⚡💙</div>
+        <h1>BEBÊ QUER MAMAR<br><span>Laserterapia Pediátrica</span></h1>
+        <p class="sub-capa">Uma nova camada de cuidado dentro da clínica pediátrica — onde a ciência encontra o carinho</p>
+        <p class="nome-prof">Erika Marini</p>
+        <p style="font-size: 1rem; color: var(--azul-suave); margin-top: 8px;">Enfermeira Laserterapeuta</p>
+        <div class="dados-contato">
+            <p>@bebequermamar.laser • Campinas e Região</p>
+            <p style="margin-top: 8px; font-style: italic;">Cuidado que acolhe. Ciência que transforma.</p>
+        </div>
+    </div>
+    <div class="numero-pagina">1</div>
+</section>
+
+<!-- 📄 PÁGINA 2 — PROPOSTA -->
+<section class="pagina">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(59,130,246,0.25), rgba(96,165,250,0.15));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Apresentação</span>
+        <h2 class="titulo-pagina">Não é sobre substituir.<br>É sobre <span>ampliar o cuidado</span>.</h2>
+        <p class="subtitulo">Criar uma camada complementar de atendimento, integrada à jornada de saúde do paciente, com respaldo técnico-científico.</p>
+        
+        <div class="grid-3">
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-link"></i></div>
+                <h4>Integração</h4>
+                <p>O serviço conversa com o cuidado já realizado pelo pediatra e demais profissionais da equipe.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-heart"></i></div>
+                <h4>Acolhimento</h4>
+                <p>Experiência pensada para mães, bebês e crianças, com comunicação clara, empática e respeitosa.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-bolt"></i></div>
+                <h4>Praticidade</h4>
+                <p>Atendimento organizado dentro da clínica ou por encaminhamento — fluxo simples e transparente.</p>
+            </div>
+        </div>
+
+        <p class="destaque-frase">Minha proposta: transformar a laserterapia em um serviço complementar organizado, com fluxo claro de encaminhamento e respeito às competências de cada profissional.</p>
+    </div>
+    <div class="numero-pagina">2</div>
+</section>
+
+<!-- 📄 PÁGINA 3 — QUEM É ERIKA -->
+<section class="pagina pagina-azul fundo-escuro">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(200,169,81,0.25), rgba(240,208,112,0.1));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Sobre</span>
+        <h2 class="titulo-pagina">Quem é <span>Erika Marini</span>?</h2>
+        <p class="subtitulo">Uma enfermeira que conhece o universo materno-infantil por dentro.</p>
+        
+        <div class="grid-2">
+            <div>
+                <p style="font-size: 1.2rem; margin-bottom: 24px;">
+                    <strong style="font-size: 2.5rem; color: var(--dourado-brilho); font-family: var(--fonte-titulo);">8 anos</strong><br>
+                    de experiência em maternidade e berçário
+                </p>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i>
+                    <span><strong>Enfermeira Laserterapeuta</strong> — capacitação completa em fotobiomodulação</span>
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i>
+                    <span><strong>Neurociência e Desenvolvimento Humano</strong> — compreensão integral do bebê</span>
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i>
+                    <span><strong>Amamentação</strong> — apoio especializado e contínuo</span>
+                </div>
+            </div>
+            <div class="card">
+                <p style="font-family: var(--fonte-titulo); font-style: italic; font-size: 1.1rem; line-height: 1.9; color: var(--azul-luz);">
+                    "O diferencial não é apenas o equipamento. É saber quando avaliar, quando indicar, como integrar e quando encaminhar."
+                </p>
+                <div style="margin-top: 24px; padding-top: 24px; border-top: 1px solid rgba(200,169,81,0.2);">
+                    <p style="color: #cbd5e1;">Avaliação de enfermagem + Fotobiomodulação + Cuidado individualizado = <strong style="color: var(--dourado-brilho);">Resultado seguro e humanizado</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="numero-pagina">3</div>
+</section>
+
+<!-- 📄 PÁGINA 4 — APLICAÇÕES -->
+<section class="pagina">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(34,197,94,0.2), rgba(59,130,246,0.15));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Aplicações</span>
+        <h2 class="titulo-pagina">Onde o <span>laser</span> cuida</h2>
+        <p class="subtitulo">Indicações selecionadas — sem promessa de cura. Sempre com avaliação prévia e respaldo técnico.</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-band-aid"></i></div>
+                <h4>Lesões e Feridas Cutâneas</h4>
+                <p>Apoio ao reparo tecidual em situações selecionadas, acelerando a recuperação de forma natural.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-heartbeat"></i></div>
+                <h4>Dor e Desconforto</h4>
+                <p>Recurso complementar que atua reduzindo inflamação e trazendo alívio gradual e seguro.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-baby"></i></div>
+                <h4>Pós-Procedimento</h4>
+                <p>Cuidado de reparação e conforto, integrado ao acompanhamento da equipe médica.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-comments"></i></div>
+                <h4>Orientação à Família</h4>
+                <p>Explicação clara do tratamento, sinais de alerta e acompanhamento contínuo da evolução.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-user-check"></i></div>
+                <h4>Cuidado Individualizado</h4>
+                <p>Conduta definida caso a caso, com respeito aos limites profissionais e à singularidade de cada paciente.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-handshake"></i></div>
+                <h4>Atuação em Rede</h4>
+                <p>Comunicação transparente e contínua com o pediatra e todos os envolvidos no cuidado.</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 32px; font-size: 0.85rem; color: var(--texto-suave); font-style: italic; padding-left: 16px; border-left: 2px solid rgba(59,130,246,0.2);">
+            * Sobre TEA, TDAH, bronquiolite e outras condições: a força das evidências varia. Tais temas são comunicados com cautela e linguagem baseada em evidências científicas.
+        </p>
+    </div>
+    <div class="numero-pagina">4</div>
+</section>
+
+<!-- 📄 PÁGINA 5 — FLUXO -->
+<section class="pagina pagina-azul fundo-escuro">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(245,158,11,0.2), rgba(200,169,81,0.15));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Funcionamento</span>
+        <h2 class="titulo-pagina">Simples. Transparente. <span>Eficaz.</span></h2>
+        <p class="subtitulo">Um fluxo que respeita o tempo do pediatra e acolhe a família.</p>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 20px;">
+            <div class="passo">
+                <span class="passo-numero">01</span>
+                <div>
+                    <h4>Identificação</h4>
+                    <p>O pediatra identifica o paciente com possível indicação para cuidado complementar.</p>
+                </div>
+            </div>
+            <div class="passo">
+                <span class="passo-numero">02</span>
+                <div>
+                    <h4>Encaminhamento</h4>
+                    <p>A família recebe orientação clara sobre o serviço e todo o fluxo de atendimento.</p>
+                </div>
+            </div>
+            <div class="passo">
+                <span class="passo-numero">03</span>
+                <div>
+                    <h4>Avaliação</h4>
+                    <p>Erika realiza avaliação completa, verifica indicação, limites e segurança da aplicação.</p>
+                </div>
+            </div>
+            <div class="passo">
+                <span class="passo-numero">04</span>
+                <div>
+                    <h4>Intervenção</h4>
+                    <p>Aplicação da laserterapia conforme protocolo estabelecido e competência profissional.</p>
+                </div>
+            </div>
+            <div class="passo">
+                <span class="passo-numero">05</span>
+                <div>
+                    <h4>Retorno</h4>
+                    <p>Registro detalhado e comunicação da evolução ao pediatra e à família.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="numero-pagina">5</div>
+</section>
+
+<!-- 📄 PÁGINA 6 — VALOR PARA CLÍNICA -->
+<section class="pagina">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(16,185,129,0.2), rgba(59,130,246,0.15));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Parceria</span>
+        <h2 class="titulo-pagina">O que a clínica <span>ganha</span></h2>
+        <p class="subtitulo">Agregar valor sem sobrecarregar — ampliar cuidado sem duplicar trabalho.</p>
+
+        <div class="grid-2">
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-star"></i></div>
+                <h4>Mais Possibilidades de Cuidado</h4>
+                <p>Serviço complementar para casos selecionados — sem investimento em equipamento ou treinamento.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-clipboard-list"></i></div>
+                <h4>Fluxo Organizado</h4>
+                <p>Encaminhamento, agenda, avaliação e acompanhamento — tudo definido previamente.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-smile"></i></div>
+                <h4>Experiência da Família</h4>
+                <p>Acolhimento especializado que fortalece a confiança na clínica e no cuidado recebido.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-building"></i></div>
+                <h4>Posicionamento</h4>
+                <p>Diferencial de atendimento multiprofissional que destaca a clínica pela excelência.</p>
+            </div>
+        </div>
+
+        <p class="destaque-frase">O pediatra continua no centro do cuidado: diagnóstico e tratamentos de sua competência permanecem sob sua responsabilidade.</p>
+    </div>
+    <div class="numero-pagina">6</div>
+</section>
+
+<!-- 📄 PÁGINA 7 — MODELOS DE PARCERIA -->
+<section class="pagina pagina-azul fundo-escuro">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(99,102,241,0.2), rgba(200,169,81,0.15));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Modelos</span>
+        <h2 class="titulo-pagina">Parcerias <span>adaptáveis</span></h2>
+        <p class="subtitulo">Cada clínica tem sua realidade — o formato se ajusta a você.</p>
+
+        <div class="grid-3">
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-arrow-right"></i></div>
+                <h4>Encaminhamento</h4>
+                <p>A clínica identifica e encaminha. O atendimento é realizado pela Erika de forma particular.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-calendar-check"></i></div>
+                <h4>Agenda na Clínica</h4>
+                <p>Horários fixos dentro da estrutura da clínica — presença integrada à rotina.</p>
+            </div>
+            <div class="card">
+                <div class="icone-lindo"><i class="fas fa-rocket"></i></div>
+                <h4>Projeto-Piloto</h4>
+                <p>Período de teste para avaliar fluxo, experiência das famílias e então ampliar.</p>
+            </div>
+        </div>
+
+        <p style="margin-top: 32px; color: var(--azul-suave);">
+            <i class="fas fa-graduation-cap" style="color: var(--dourado-brilho); margin-right: 10px;"></i>
+            Também desenvolvemos <strong>ações educativas</strong> sobre laserterapia, amamentação e cuidados neonatais para sua equipe e pacientes.
+        </p>
+    </div>
+    <div class="numero-pagina">7</div>
+</section>
+
+<!-- 📄 PÁGINA 8 — SEGURANÇA -->
+<section class="pagina">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(59,130,246,0.2), rgba(147,197,253,0.1));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Fundamentos</span>
+        <h2 class="titulo-pagina">Segurança. Responsabilidade. <span>Respeito.</span></h2>
+        <p class="subtitulo">Uma parceria profissional precisa ser tão cuidadosa quanto acolhedora.</p>
+
+        <div class="grid-2">
+            <div>
+                <div class="lista-item">
+                    <i class="fas fa-shield-check"></i>
+                    <span><strong>Avaliação prévia</strong> — indicação verificada antes de cada aplicação</span>
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-user-graduate"></i>
+                    <span><strong>Capacitação contínua</strong> — atuação dentro dos limites de formação</span>
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-file-signature"></i>
+                    <span><strong>Registro completo</strong> — processo de enfermagem documentado</span>
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-book"></i>
+                    <span><strong>Base em evidências</strong> — comunicação alinhada à literatura científica</span>
+                </div>
+            </div>
+            <div class="card" style="background: rgba(59,130,246,0.05); border-color: rgba(96,165,250,0.25);">
+                <h4 style="color: var(--azul-suave); margin-bottom: 16px;"><i class="fas fa-scroll" style="color: var(--azul-claro); margin-right: 8px;"></i> Base Normativa — Cofen</h4>
+                <div class="lista-item" style="padding: 4px 0; background: transparent;">
+                    <i class="fas fa-check-double" style="color: var(--azul-claro); font-size: 0.9rem;"></i>
+                    <span>Parecer nº 13/2018</span>
+                </div>
+                <div class="lista-item" style="padding: 4px 0; background: transparent;">
+                    <i class="fas fa-check-double" style="color: var(--azul-claro); font-size: 0.9rem;"></i>
+                    <span>Parecer nº 8/2025</span>
+                </div>
+                <div class="lista-item" style="padding: 4px 0; background: transparent;">
+                    <i class="fas fa-check-double" style="color: var(--azul-claro); font-size: 0.9rem;"></i>
+                    <span>Decisão Cofen nº 23/2026</span>
+                </div>
+                <p style="margin-top: 16px; font-size: 0.85rem; color: var(--texto-suave);">E demais normas profissionais aplicáveis.</p>
+            </div>
+        </div>
+    </div>
+    <div class="numero-pagina">8</div>
+</section>
+
+<!-- 📄 PÁGINA 9 — PROPOSTA -->
+<section class="pagina pagina-azul fundo-escuro">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(200,169,81,0.2), rgba(245,158,11,0.1));"></div>
+    </div>
+    <div class="container bloco-central">
+        <span class="marcador">Proposta</span>
+        <h2 class="titulo-pagina">Começar pequeno. Crescer <span>juntos</span>.</h2>
+        <p class="subtitulo">Construir uma parceria que faça sentido para os dois lados.</p>
+
+        <div class="grid-2">
+            <div>
+                <h4 style="color: var(--dourado-brilho); margin-bottom: 20px; font-family: var(--fonte-titulo);">Eu entrego</h4>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i> Avaliação de enfermagem
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i> Equipamento e aplicação
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i> Organização do atendimento
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i> Orientação aos responsáveis
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-gem"></i> Registro e acompanhamento
+                </div>
+            </div>
+            <div>
+                <h4 style="color: var(--azul-suave); margin-bottom: 20px; font-family: var(--fonte-titulo);">A clínica disponibiliza</h4>
+                <div class="lista-item">
+                    <i class="fas fa-handshake"></i> Fluxo de encaminhamento
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-handshake"></i> Espaço e agenda (conforme modelo)
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-handshake"></i> Integração com a equipe
+                </div>
+                <div class="lista-item">
+                    <i class="fas fa-handshake"></i> Definição conjunta comercial
+                </div>
+            </div>
+        </div>
+
+        <p class="destaque-frase">Por que começar com um projeto-piloto? Porque permite conhecer o serviço, observar a experiência das famílias e ajustar o fluxo antes de ampliar.</p>
+    </div>
+    <div class="numero-pagina">9</div>
+</section>
+
+<!-- 📄 PÁGINA 10 — ENCERRAMENTO -->
+<section class="pagina" style="background: linear-gradient(180deg, rgba(15,52,112,0.3), rgba(5,16,38,0.9));">
+    <div class="fundo-marca">
+        <div class="fundo-img" style="background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(200,169,81,0.2));"></div>
+    </div>
+    <div class="container bloco-central" style="text-align: center;">
+        <h2 class="titulo-pagina" style="font-size: 2.8rem;">Vamos construir esse cuidado <span>juntos</span>? 💙</h2>
+        <p class="subtitulo" style="font-size: 1.2rem; max-width: 650px; margin-left: auto; margin-right: auto;">
+            Uma proposta complementar, humana e profissional para clínicas que querem ampliar possibilidades de cuidado materno-infantil e pediátrico.
+        </p>
+
+        <div class="assinatura">
+            <h4>Erika Marini</h4>
+            <p style="font-size: 1rem; color: var(--azul-suave); font-weight: 600;">Enfermeira Laserterapeuta</p>
+            <div style="margin-top: 24px; display: flex; flex-direction: column; gap: 10px;">
+                <p><i class="fab fa-whatsapp" style="color: #25d366; margin-right: 10px;"></i> WhatsApp: <a href="https://wa.me/5519974022547" target="_blank">(19) 97402-2547</a></p>
+                <p><i class="fab fa-instagram" style="color: var(--azul-claro); margin-right: 10px;"></i> @bebequermamar.laser</p>
+                <p><i class="fas fa-map-marker-alt" style="color: var(--dourado-suave); margin-right: 10px;"></i> Campinas e Região • Hortolândia/SP</p>
+            </div>
+            <p style="margin-top: 28px; font-family: var(--fonte-titulo); font-style: italic; font-size: 1.1rem; color: var(--dourado-brilho);">
+                Cuidado que acolhe. Ciência que transforma.
+            </p>
+        </div>
+    </div>
+    <div class="numero-pagina">10</div>
+</section>
+
+<script>
+// Animação de entrada das páginas ao rolar
+const observador = new IntersectionObserver((entradas) => {
+    entradas.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visivel');
+    });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.pagina').forEach(p => {
+    observador.observe(p);
+});
+</script>
+
+</body>
+</html>
